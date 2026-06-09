@@ -1,0 +1,2614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Revolutionary educational platform combining AI technology with proven teaching methods for personalized learning experiences.">
+    <meta name="keywords" content="kids learning, education, AI, handwriting, speech, mathematics, child development">
+    <meta name="author" content="Kids Learning Tool">
+    <title>Story Mode - Kids Learning Tool</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Base Styles -->
+    <style>
+        /* CSS Reset and Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Design System Colors */
+            --color-primary-50: #eff6ff;
+            --color-primary-100: #dbeafe;
+            --color-primary-200: #bfdbfe;
+            --color-primary-300: #93c5fd;
+            --color-primary-400: #60a5fa;
+            --color-primary-500: #3b82f6;
+            --color-primary-600: #2563eb;
+            --color-primary-700: #1d4ed8;
+            --color-primary-800: #1e40af;
+            --color-primary-900: #1e3a8a;
+            
+            --color-secondary-50: #fdf4ff;
+            --color-secondary-100: #fae8ff;
+            --color-secondary-200: #f5d0fe;
+            --color-secondary-300: #e879f9;
+            --color-secondary-400: #d946ef;
+            --color-secondary-500: #c026d3;
+            --color-secondary-600: #a21caf;
+            --color-secondary-700: #86198f;
+            --color-secondary-800: #701a75;
+            --color-secondary-900: #5a189a;
+            
+            --color-success-50: #f0fdf4;
+            --color-success-100: #dcfce7;
+            --color-success-200: #bbf7d0;
+            --color-success-300: #86efac;
+            --color-success-400: #4ade80;
+            --color-success-500: #22c55e;
+            --color-success-600: #16a34a;
+            --color-success-700: #15803d;
+            --color-success-800: #166534;
+            --color-success-900: #14532d;
+            
+            --color-warning-50: #fffbeb;
+            --color-warning-100: #fef3c7;
+            --color-warning-200: #fde68a;
+            --color-warning-300: #fcd34d;
+            --color-warning-400: #fbbf24;
+            --color-warning-500: #f59e0b;
+            --color-warning-600: #d97706;
+            --color-warning-700: #b45309;
+            --color-warning-800: #92400e;
+            --color-warning-900: #78350f;
+            
+            --color-danger-50: #fef2f2;
+            --color-danger-100: #fee2e2;
+            --color-danger-200: #fecaca;
+            --color-danger-300: #fca5a5;
+            --color-danger-400: #f87171;
+            --color-danger-500: #ef4444;
+            --color-danger-600: #dc2626;
+            --color-danger-700: #b91c1c;
+            --color-danger-800: #991b1b;
+            --color-danger-900: #7f1d1d;
+            
+            --color-gray-50: #f9fafb;
+            --color-gray-100: #f3f4f6;
+            --color-gray-200: #e5e7eb;
+            --color-gray-300: #d1d5db;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-600: #4b5563;
+            --color-gray-700: #374151;
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+            
+            /* Typography Scale */
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-xs: 0.75rem;     /* 12px */
+            --font-size-sm: 0.875rem;    /* 14px */
+            --font-size-base: 1rem;      /* 16px */
+            --font-size-lg: 1.125rem;    /* 18px */
+            --font-size-xl: 1.25rem;     /* 20px */
+            --font-size-2xl: 1.5rem;     /* 24px */
+            --font-size-3xl: 1.875rem;   /* 30px */
+            --font-size-4xl: 2.25rem;    /* 36px */
+            --font-size-5xl: 3rem;       /* 48px */
+            --font-size-6xl: 3.75rem;    /* 60px */
+            --font-size-7xl: 4.5rem;     /* 72px */
+            
+            /* Spacing Scale */
+            --space-0: 0;
+            --space-1: 0.25rem;   /* 4px */
+            --space-2: 0.5rem;    /* 8px */
+            --space-3: 0.75rem;   /* 12px */
+            --space-4: 1rem;      /* 16px */
+            --space-5: 1.25rem;   /* 20px */
+            --space-6: 1.5rem;    /* 24px */
+            --space-8: 2rem;      /* 32px */
+            --space-10: 2.5rem;   /* 40px */
+            --space-12: 3rem;     /* 48px */
+            --space-16: 4rem;     /* 64px */
+            --space-20: 5rem;     /* 80px */
+            --space-24: 6rem;     /* 96px */
+            --space-32: 8rem;     /* 128px */
+            
+            /* Border Radius */
+            --radius-none: 0;
+            --radius-sm: 0.125rem;    /* 2px */
+            --radius-base: 0.25rem;  /* 4px */
+            --radius-md: 0.375rem;   /* 6px */
+            --radius-lg: 0.5rem;     /* 8px */
+            --radius-xl: 0.75rem;    /* 12px */
+            --radius-2xl: 1rem;      /* 16px */
+            --radius-3xl: 1.5rem;    /* 24px */
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            
+            /* Z-index Scale */
+            --z-0: 0;
+            --z-10: 10;
+            --z-20: 20;
+            --z-30: 30;
+            --z-40: 40;
+            --z-50: 50;
+            --z-auto: auto;
+        }
+        
+        /* Base Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--color-gray-800);
+            background-color: var(--color-gray-50);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Container System */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space-6);
+            padding-right: var(--space-6);
+        }
+        
+        .container-sm {
+            width: 100%;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space-4);
+            padding-right: var(--space-4);
+        }
+        
+        .container-lg {
+            width: 100%;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space-8);
+            padding-right: var(--space-8);
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-gray-200);
+            z-index: var(--z-50);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .navbar-container {
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space-6);
+            padding-right: var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        
+        .logo {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--color-primary-600);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: var(--color-primary-700);
+            transform: scale(1.05);
+        }
+        
+        .logo i {
+            font-size: var(--font-size-2xl);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+        
+        .nav-link {
+            color: var(--color-gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary-600);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover {
+            color: var(--color-primary-600);
+            background-color: var(--color-primary-50);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--color-primary-600);
+            background-color: var(--color-primary-50);
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Button System */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--color-primary-600);
+            border: 2px solid var(--color-primary-600);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--color-primary-600);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--color-primary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-ghost {
+            background: transparent;
+            color: var(--color-gray-600);
+            border: 1px solid var(--color-gray-300);
+        }
+        
+        .btn-ghost:hover {
+            background: var(--color-gray-50);
+            color: var(--color-gray-800);
+            border-color: var(--color-gray-400);
+        }
+        
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--font-size-xs);
+        }
+        
+        .btn-lg {
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--font-size-base);
+        }
+        
+        /* Card System */
+        .card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-gray-200);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary-500), var(--color-secondary-500), var(--color-success-500));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--color-primary-200);
+        }
+        
+        .card-header {
+            padding: var(--space-6);
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+        
+        .card-body {
+            padding: var(--space-6);
+        }
+        
+        .card-footer {
+            padding: var(--space-6);
+            border-top: 1px solid var(--color-gray-100);
+            background: var(--color-gray-50);
+        }
+        
+        /* Typography */
+        h1 { 
+            font-size: var(--font-size-4xl); 
+            font-weight: 800; 
+            line-height: 1.2; 
+            color: var(--color-gray-900);
+            letter-spacing: -0.025em;
+        }
+        h2 { 
+            font-size: var(--font-size-3xl); 
+            font-weight: 700; 
+            line-height: 1.3; 
+            color: var(--color-gray-900);
+            letter-spacing: -0.025em;
+        }
+        h3 { 
+            font-size: var(--font-size-2xl); 
+            font-weight: 600; 
+            line-height: 1.3; 
+            color: var(--color-gray-900);
+            letter-spacing: -0.025em;
+        }
+        h4 { 
+            font-size: var(--font-size-xl); 
+            font-weight: 600; 
+            line-height: 1.4; 
+            color: var(--color-gray-900);
+        }
+        h5 { 
+            font-size: var(--font-size-lg); 
+            font-weight: 500; 
+            line-height: 1.4; 
+            color: var(--color-gray-900);
+        }
+        h6 { 
+            font-size: var(--font-size-base); 
+            font-weight: 500; 
+            line-height: 1.4; 
+            color: var(--color-gray-900);
+        }
+        
+        /* Form System */
+        .form-group {
+            margin-bottom: var(--space-5);
+        }
+        
+        .form-label {
+            display: block;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-gray-700);
+            margin-bottom: var(--space-2);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            font-size: var(--font-size-base);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-lg);
+            background: white;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        
+        .form-input:focus {
+            border-color: var(--color-primary-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-input.error {
+            border-color: var(--color-danger-500);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+        
+        /* Messages */
+        .messages {
+            margin: var(--space-6) 0;
+        }
+        
+        .message {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-3);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        
+        .message.success {
+            background: var(--color-success-50);
+            color: var(--color-success-800);
+            border: 1px solid var(--color-success-200);
+        }
+        
+        .message.error {
+            background: var(--color-danger-50);
+            color: var(--color-danger-800);
+            border: 1px solid var(--color-danger-200);
+        }
+        
+        .message.warning {
+            background: var(--color-warning-50);
+            color: var(--color-warning-800);
+            border: 1px solid var(--color-warning-200);
+        }
+        
+        .message.info {
+            background: var(--color-primary-50);
+            color: var(--color-primary-800);
+            border: 1px solid var(--color-primary-200);
+        }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-1 { flex: 1; }
+        
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .items-end { align-items: flex-end; }
+        
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-start { justify-content: flex-start; }
+        .justify-end { justify-content: flex-end; }
+        
+        .gap-1 { gap: var(--space-1); }
+        .gap-2 { gap: var(--space-2); }
+        .gap-3 { gap: var(--space-3); }
+        .gap-4 { gap: var(--space-4); }
+        .gap-6 { gap: var(--space-6); }
+        .gap-8 { gap: var(--space-8); }
+        
+        .mt-1 { margin-top: var(--space-1); }
+        .mt-2 { margin-top: var(--space-2); }
+        .mt-3 { margin-top: var(--space-3); }
+        .mt-4 { margin-top: var(--space-4); }
+        .mt-6 { margin-top: var(--space-6); }
+        .mt-8 { margin-top: var(--space-8); }
+        .mt-12 { margin-top: var(--space-12); }
+        
+        .mb-1 { margin-bottom: var(--space-1); }
+        .mb-2 { margin-bottom: var(--space-2); }
+        .mb-3 { margin-bottom: var(--space-3); }
+        .mb-4 { margin-bottom: var(--space-4); }
+        .mb-6 { margin-bottom: var(--space-6); }
+        .mb-8 { margin-bottom: var(--space-8); }
+        .mb-12 { margin-bottom: var(--space-12); }
+        
+        .p-1 { padding: var(--space-1); }
+        .p-2 { padding: var(--space-2); }
+        .p-3 { padding: var(--space-3); }
+        .p-4 { padding: var(--space-4); }
+        .p-6 { padding: var(--space-6); }
+        .p-8 { padding: var(--space-8); }
+        
+        .px-4 { padding-left: var(--space-4); padding-right: var(--space-4); }
+        .px-6 { padding-left: var(--space-6); padding-right: var(--space-6); }
+        .px-8 { padding-left: var(--space-8); padding-right: var(--space-8); }
+        
+        .py-4 { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+        .py-6 { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+        .py-8 { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 0.6s ease-out;
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 0.6s ease-out;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: var(--space-4);
+                padding-right: var(--space-4);
+            }
+            
+            .navbar-container {
+                padding-left: var(--space-4);
+                padding-right: var(--space-4);
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            h1 { font-size: var(--font-size-3xl); }
+            h2 { font-size: var(--font-size-2xl); }
+            h3 { font-size: var(--font-size-xl); }
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding-left: var(--space-3);
+                padding-right: var(--space-3);
+            }
+            
+            .navbar-container {
+                padding-left: var(--space-3);
+                padding-right: var(--space-3);
+            }
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Kids Learning Tool
+            </a>
+            
+            
+                <div class="nav-links">
+                    
+                        <a href="/child/dashboard/" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            Dashboard
+                        </a>
+                    
+                    
+                    <form action="/logout/" method="post" style="display: inline;">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="tTwhXBdGfJCg3RixOhuByC8KosNo8R1xKepbAu9iXu51dtcdGkQptgW3RzoijeDx">
+                        <button type="submit" class="btn btn-ghost btn-sm">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main style="margin-top: 80px;">
+        
+        
+        
+<style>
+    .story-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        color: white;
+    }
+    
+    .story-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .story-title {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .language-sections {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .language-section {
+        background-color: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    
+    .language-section h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: white;
+        font-size: 1.5em;
+    }
+    
+    .story-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .story-card {
+        background: rgba(255,255,255,0.95);
+        border-radius: 10px;
+        padding: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 3px solid transparent;
+        position: relative;
+    }
+    
+    .story-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        background: white;
+    }
+    
+    .story-card.active {
+        border-color: #667eea;
+        background: white;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+    
+    .story-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .story-card-header h4 {
+        margin: 0;
+        color: #333;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+    
+    .audio-badge {
+        font-size: 1.2em;
+    }
+    
+    .story-card-preview {
+        color: #666;
+        font-size: 0.8em;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        height: 50px;
+        overflow: hidden;
+    }
+    
+    .story-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.7em;
+    }
+    
+    .read-time {
+        color: #999;
+    }
+    
+    .current-badge {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 2px 6px;
+        border-radius: 10px;
+        font-weight: 500;
+    }
+    
+    .story-content {
+        background-color: rgba(255,255,255,0.95);
+        color: #333;
+        padding: 30px;
+        border-radius: 10px;
+        font-size: 1.2em;
+        line-height: 1.8;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .story-header-with-audio {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e9ecef;
+    }
+    
+    .story-header-with-audio h2 {
+        margin: 0;
+        color: #333;
+        flex: 1;
+    }
+    
+    .audio-player-inline {
+        flex-shrink: 0;
+        margin-left: 20px;
+    }
+    
+    .audio-player-inline audio {
+        width: 300px;
+        height: 40px;
+    }
+    
+    .tts-controls-inline {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        margin-left: 20px;
+    }
+    
+    .tts-status-inline {
+        color: #667eea;
+        font-weight: 600;
+        font-size: 0.9em;
+        white-space: nowrap;
+    }
+    
+    .tts-buttons-inline {
+        display: flex;
+        gap: 5px;
+    }
+    
+    .speech-section {
+        background-color: rgba(255,255,255,0.95);
+        color: #333;
+        padding: 30px;
+        border-radius: 10px;
+        margin-top: 30px;
+    }
+    
+    .speech-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .speech-controls {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin: 0 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-record {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        color: white;
+    }
+    
+    .btn-stop {
+        background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        color: white;
+    }
+    
+    .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    .transcription-display {
+        background-color: #f8f9fa;
+        border: 2px dashed #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        min-height: 100px;
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: #495057;
+        margin-bottom: 20px;
+    }
+    
+    .transcription-display.active {
+        border-color: #007bff;
+        background-color: #e3f2fd;
+    }
+    
+    .status-indicator {
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    
+    .status-listening {
+        color: #dc3545;
+        font-weight: bold;
+        animation: pulse 1.5s infinite;
+    }
+    
+    .browser-warning {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .no-stories {
+        text-align: center;
+        padding: 30px;
+        background-color: rgba(255,255,255,0.95);
+        color: #333;
+        border-radius: 10px;
+        grid-column: 1 / -1;
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    
+    @media (max-width: 768px) {
+        .language-sections {
+            grid-template-columns: 1fr;
+        }
+        
+        .story-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .story-header-with-audio {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .audio-player-inline {
+            margin-left: 0;
+            width: 100%;
+        }
+        
+        .audio-player-inline audio {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="story-container">
+    <div class="story-header">
+        <h1 class="story-title">📚 Story Mode</h1>
+        <p>Choose a story and practice reading it out loud!</p>
+        <p>📖 11 stories available</p>
+    </div>
+    
+    <!-- Language-separated story sections -->
+    <div class="language-sections">
+        <!-- English Stories Section -->
+        <div class="language-section">
+            <h3>🇺🇸 English Stories</h3>
+            
+                <div class="story-grid">
+                    
+                        <div class="story-card active" 
+                             data-story-id="1" data-language="en">
+                            <div class="story-card-header">
+                                <h4>The Little Rabbit&#x27;s Adventure</h4>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                Once upon a time, in a green meadow filled with colorful flowers, …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                                    <span class="current-badge">Reading</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="2" data-language="en">
+                            <div class="story-card-header">
+                                <h4>Rosie&#x27;s Meadow Adventure</h4>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                Once upon a time, in a beautiful green meadow, there lived a …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="3" data-language="en">
+                            <div class="story-card-header">
+                                <h4>The Magical Garden</h4>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                In a quiet neighborhood, there was a special garden that belonged to …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="4" data-language="en">
+                            <div class="story-card-header">
+                                <h4>Timmy the Turtle&#x27;s Big Journey</h4>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                Timmy was a small turtle with a big dream. He lived in …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="5" data-language="en">
+                            <div class="story-card-header">
+                                <h4>The Star That Lost Its Sparkle</h4>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                High up in the night sky, there was a little star named …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="6" data-language="en">
+                            <div class="story-card-header">
+                                <h4>The Brave Little Firefly</h4>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                In a meadow filled with tall grass and wildflowers, there lived a …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+            
+        </div>
+        
+        <!-- Malayalam Stories Section -->
+        <div class="language-section">
+            <h3>🇮🇳 Malayalam Stories</h3>
+            
+                <div class="story-grid">
+                    
+                        <div class="story-card " 
+                             data-story-id="7" data-language="ml">
+                            <div class="story-card-header">
+                                <h4>ചെറിയ മുയലിന്റെ സാഹസം</h4>
+                                
+                                    <span class="audio-badge">🎧</span>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                ഒരു കാലത്ത്, ഒരു ചെറിയ മുയൽ ഉണ്ടായിരുന്നു. അതിന്റെ പേര് മോട്ടു. മോട്ടു വളരെ ധൈര്യശാലിയായിരുന്നു. …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="8" data-language="ml">
+                            <div class="story-card-header">
+                                <h4>റോസിയുടെ പുൽമേടം</h4>
+                                
+                                    <span class="audio-badge">🎧</span>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                റോസി എന്ന ഒരു ചെറിയ പെൺകുട്ടി ഉണ്ടായിരുന്നു. അവൾക്ക് പുൽമേടങ്ങൾ വളരെ ഇഷ്ടമായിരുന്നു. ഒരു രാവിൽ, …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="9" data-language="ml">
+                            <div class="story-card-header">
+                                <h4>മാനവും സിംഹവും</h4>
+                                
+                                    <span class="audio-badge">🎧</span>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                ഒരു കാട്ടിൽ, ഒരു മാനും ഒരു സിംഹവും ഉണ്ടായിരുന്നു. അവർ നല്ല സുഹൃത്തുക്കളായിരുന്നു. ഒരു ദിവസം, …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="10" data-language="ml">
+                            <div class="story-card-header">
+                                <h4>ചന്ദ്രന്റെ കഥ</h4>
+                                
+                                    <span class="audio-badge">🎧</span>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                ഒരു രാത്രി, ഒരു ചെറിയ പെൺകുട്ടി ജാലകത്തിൽ നോക്കി. അവൾക്ക് ചന്ദ്രൻ കാണാൻ ഇഷ്ടമായിരുന്നു. ചന്ദ്രൻ …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="story-card " 
+                             data-story-id="11" data-language="ml">
+                            <div class="story-card-header">
+                                <h4>കടൽക്കാരന്റെ മകൻ</h4>
+                                
+                                    <span class="audio-badge">🎧</span>
+                                
+                            </div>
+                            <div class="story-card-preview">
+                                ഒരു ചെറിയ ഗ്രാമത്തിൽ, ഒരു കടൽക്കാരൻ ഉണ്ടായിരുന്നു. അവന്റെ പേര് രാജൻ. രാജന് കടൽ വളരെ …
+                            </div>
+                            <div class="story-card-footer">
+                                <span class="read-time">~5 min read</span>
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+    
+        <div class="story-content" id="storyContent">
+            <div class="story-header-with-audio">
+                <h2>The Little Rabbit&#x27;s Adventure</h2>
+                
+                    <div class="audio-player-inline">
+                        <audio id="storyAudio" controls preload="auto">
+                            <source src="/media/stories/generated_audio/generated_audio_1_en.mp3" type="audio/mpeg">
+                            <source src="/media/stories/generated_audio/generated_audio_1_en.mp3" type="audio/wav">
+                            <source src="/media/stories/generated_audio/generated_audio_1_en.mp3" type="audio/ogg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="tts-buttons-inline" style="margin-top: 5px;">
+                            <button class="btn btn-danger btn-sm" onclick="stopHtml5Audio()">
+                                ⏹️ Stop Audio
+                            </button>
+                            <button class="btn btn-info btn-sm" onclick="testAudioPlayback()">
+                                🧪 Test Audio
+                            </button>
+                            <button class="btn btn-warning btn-sm" onclick="forceGenerateAudio()">
+                                🔄 Regenerate Audio
+                            </button>
+                            <small class="text-muted">Generated: Mar 09, 2026 (gtts)</small>
+                        </div>
+                    </div>
+                
+            </div>
+            
+            <div class="story-text"><p>Once upon a time, in a green meadow filled with colorful flowers, there lived a little rabbit named Rosie.</p>
+
+<p>Rosie had soft white fur and long floppy ears. She loved to hop around the meadow, exploring new places and making friends with butterflies and birds.</p>
+
+<p>One sunny morning, Rosie decided to go on an adventure. She hopped past the tall oak tree, across the babbling brook, and into the deep forest.</p>
+
+<p>In the forest, she met a wise old owl who sat on a branch. &quot;Hello little one,&quot; said the owl. &quot;Where are you going?&quot;</p>
+
+<p>&quot;I&#x27;m on an adventure!&quot; said Rosie excitedly. &quot;I want to see what&#x27;s beyond the meadow.&quot;</p>
+
+<p>The owl smiled. &quot;Adventure is wonderful, but remember to be brave and kind. The forest has many surprises.&quot;</p>
+
+<p>Rosie continued her journey and soon found a patch of delicious carrots. She nibbled on them happily while watching the clouds drift by.</p>
+
+<p>As evening approached, Rosie knew it was time to go home. She hopped back through the forest, waved goodbye to the owl, and returned to her cozy burrow.</p>
+
+<p>That night, Rosie dreamed of her wonderful adventure and all the friends she had made. She couldn&#x27;t wait for her next adventure in the big, beautiful world.</p></div>
+        </div>
+        
+        <div class="speech-section">
+            <div class="speech-header">
+                <h3>🎤 Practice Reading Aloud</h3>
+                <p>Click the microphone button and read the story out loud. The computer will listen and show what it hears!</p>
+            </div>
+            
+            <!-- Language-specific recording -->
+            <div class="language-recording-controls" style="margin-bottom: 20px;">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <label style="font-weight: bold; color: #333;">Recording Language:</label>
+                    <select id="recordingLanguageSelect" style="margin-left: 10px; padding: 5px 10px; border-radius: 5px; border: 1px solid #ddd;">
+                        <option value="auto">🔍 Auto-detect</option>
+                        <option value="en">🇺🇸 English</option>
+                        <option value="ml">🇮🇳 Malayalam</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="browserWarning" class="browser-warning" style="display: none;">
+                ⚠️ Speech recognition is not supported in your browser. Please try Chrome, Edge, or Safari.
+            </div>
+            
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-ready">🎤 Ready to listen</span>
+            </div>
+            
+            <div class="speech-controls">
+                <button id="startBtn" class="btn btn-record">
+                    🎤 Start Listening
+                </button>
+                <button id="stopBtn" class="btn btn-stop" disabled>
+                    ⏹️ Stop Listening
+                </button>
+            </div>
+            
+            <div class="transcription-display" id="transcriptionDisplay">
+                <em>Your spoken words will appear here...</em>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button id="clearBtn" class="btn btn-secondary">🗑️ Clear Text</button>
+                <button id="saveBtn" class="btn btn-primary">💾 Save Progress</button>
+            </div>
+            
+            <!-- Malayalam-specific help -->
+            <div id="malayalamHelp" style="display: none; margin-top: 15px; padding: 15px; background-color: #e8f5e8; border-radius: 10px; border-left: 4px solid #28a745;">
+                <h4 style="margin-top: 0; color: #28a745;">🇮🇳 Malayalam Recording Tips</h4>
+                <ul style="margin-bottom: 0;">
+                    <li>Speak clearly and at a moderate pace</li>
+                    <li>Ensure good microphone quality</li>
+                    <li>Try to pronounce Malayalam words clearly</li>
+                    <li>The system will evaluate your Malayalam pronunciation</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="/child/dashboard/" class="btn btn-primary">🏠 Back to Dashboard</a>
+        </div>
+    
+</div>
+
+<script>
+    // Check browser support for speech recognition
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+    let isListening = false;
+    let currentLanguage = 'en';
+    let recordingLanguage = 'auto'; // User-selected recording language
+    
+    // DOM elements
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const saveBtn = document.getElementById('saveBtn');
+    const transcriptionDisplay = document.getElementById('transcriptionDisplay');
+    const statusIndicator = document.getElementById('statusIndicator');
+    const browserWarning = document.getElementById('browserWarning');
+    const recordingLanguageSelect = document.getElementById('recordingLanguageSelect');
+    const malayalamHelp = document.getElementById('malayalamHelp');
+    
+    // Initialize speech recognition
+    if (SpeechRecognition) {
+        initializeSpeechRecognition(currentLanguage);
+        
+        // Add event listener for recording language selection
+        if (recordingLanguageSelect) {
+            recordingLanguageSelect.addEventListener('change', function() {
+                recordingLanguage = this.value;
+                console.log(`🎤 Recording language changed to: ${recordingLanguage}`);
+                
+                // Show/hide Malayalam help
+                if (malayalamHelp) {
+                    malayalamHelp.style.display = recordingLanguage === 'ml' ? 'block' : 'none';
+                }
+                
+                // Reinitialize speech recognition with new language if not auto
+                if (recordingLanguage !== 'auto') {
+                    initializeSpeechRecognition(recordingLanguage);
+                } else {
+                    // Auto-detect based on story language
+                    initializeSpeechRecognition(currentLanguage);
+                }
+            });
+            
+            // Initial setup
+            if (currentLanguage === 'ml') {
+                recordingLanguageSelect.value = 'ml';
+                if (malayalamHelp) {
+                    malayalamHelp.style.display = 'block';
+                }
+            }
+        }
+    } else {
+        browserWarning.style.display = 'block';
+        startBtn.disabled = true;
+        stopBtn.disabled = true;
+        updateStatus('error', 'Speech recognition not supported in this browser');
+    }
+    
+    // Button event handlers
+    startBtn.addEventListener('click', startListening);
+    stopBtn.addEventListener('click', stopListening);
+    clearBtn.addEventListener('click', clearTranscription);
+    saveBtn.addEventListener('click', saveProgress);
+    
+    function testAudioPlayback() {
+        console.log('🧪 Testing audio playback...');
+        const audioElement = document.getElementById('storyAudio');
+        
+        if (!audioElement) {
+            console.error('❌ No audio element found');
+            alert('No audio element found');
+            return;
+        }
+        
+        console.log('🎵 Audio element found:', audioElement);
+        console.log('🎵 Audio src:', audioElement.src);
+        console.log('🎵 Audio readyState:', audioElement.readyState);
+        console.log('🎵 Audio networkState:', audioElement.networkState);
+        
+        // Test different audio properties
+        console.log('🎵 Audio duration:', audioElement.duration);
+        console.log('🎵 Audio currentTime:', audioElement.currentTime);
+        console.log('🎵 Audio paused:', audioElement.paused);
+        console.log('🎵 Audio ended:', audioElement.ended);
+        
+        // Try to play the audio
+        try {
+            const playPromise = audioElement.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('✅ Audio playback started successfully');
+                    updateTTSStatus('🎵 Test audio playing...');
+                }).catch(error => {
+                    console.error('❌ Audio playback failed:', error);
+                    updateTTSStatus('❌ Test audio playback failed');
+                    alert('Audio playback failed: ' + error.message);
+                });
+            }
+        } catch (error) {
+            console.error('❌ Audio play error:', error);
+            updateTTSStatus('❌ Test audio play error');
+            alert('Audio play error: ' + error.message);
+        }
+    }
+    
+    function stopHtml5Audio() {
+        const audioElement = document.getElementById('storyAudio');
+        if (audioElement) {
+            audioElement.pause();
+            audioElement.currentTime = 0;
+            console.log('HTML5 audio stopped manually');
+        }
+    }
+    
+    function selectStory(storyId, language) {
+        // Stop all audio before switching stories
+        stopAllAudioGlobal();
+        
+        // Store the selected story ID and language in localStorage
+        localStorage.setItem('selectedStoryId', storyId);
+        localStorage.setItem('selectedLanguage', language);
+        
+        // Reload the page with the selected story and language
+        window.location.href = `/story-mode/?story=${storyId}&language=${language}`;
+    }
+    
+    // Add event listeners to story cards and initialize everything
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 DOM Content Loaded - Initializing story mode...');
+        
+        // Stop all audio when page loads to prevent conflicts
+        stopAllAudioGlobal();
+        
+        const storyCards = document.querySelectorAll('.story-card');
+        console.log(`📚 Found ${storyCards.length} story cards`);
+        
+        storyCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const storyId = this.getAttribute('data-story-id');
+                const language = this.getAttribute('data-language');
+                console.log(`📖 Story card clicked: ID=${storyId}, Language=${language}`);
+                if (storyId && language) {
+                    selectStory(storyId, language);
+                }
+            });
+        });
+        
+        // Add event listeners for HTML5 audio elements
+        const audioElements = document.querySelectorAll('audio');
+        console.log(`🎵 Found ${audioElements.length} audio elements`);
+        
+        audioElements.forEach((audio, index) => {
+            console.log(`🎵 Setting up audio element ${index}:`, audio.src);
+            
+            audio.addEventListener('play', function() {
+                console.log('🎵 HTML5 audio started playing');
+                stopAllAudioGlobal(); // Stop any other audio
+                currentAudioType = 'html5';
+                generatedAudio = audio;
+                updateTTSStatus('🎵 Playing pre-recorded audio...');
+            });
+            
+            audio.addEventListener('pause', function() {
+                console.log('🎵 HTML5 audio paused');
+                if (currentAudioType === 'html5') {
+                    updateTTSStatus('⏸️ Audio paused');
+                }
+            });
+            
+            audio.addEventListener('ended', function() {
+                console.log('🎵 HTML5 audio ended');
+                if (currentAudioType === 'html5') {
+                    updateTTSStatus('✅ Audio completed');
+                    currentAudioType = null;
+                    generatedAudio = null;
+                }
+            });
+            
+            audio.addEventListener('error', function(e) {
+                console.error('❌ HTML5 audio error:', e);
+                console.error('❌ Audio error details:', audio.error);
+                if (currentAudioType === 'html5') {
+                    updateTTSStatus('❌ Audio playback error');
+                    currentAudioType = null;
+                    generatedAudio = null;
+                }
+            });
+            
+            audio.addEventListener('loadstart', function() {
+                console.log('🎵 HTML5 audio loading started');
+            });
+            
+            audio.addEventListener('canplay', function() {
+                console.log('🎵 HTML5 audio can play');
+            });
+        });
+        
+        // Initialize speech recognition and auto-generate audio
+        initializeSpeechRecognition(currentLanguage);
+        
+        // Auto-generate audio for stories without audio files
+        setTimeout(() => {
+            const ttsControls = document.getElementById('ttsControls');
+            if (ttsControls) {
+                console.log('🤖 Auto-generating TTS audio...');
+                generateAudio();
+            } else {
+                console.log('🎵 Story has pre-recorded audio, no TTS generation needed');
+            }
+        }, 1000);
+        
+        console.log('✅ Story mode initialization complete');
+    });
+    
+    function initializeSpeechRecognition(languageCode) {
+        if (!SpeechRecognition) return;
+        
+        // Stop existing recognition if running
+        if (recognition && isListening) {
+            recognition.stop();
+        }
+        
+        // Create new recognition instance
+        recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        
+        // Set language based on selection
+        if (languageCode === 'ml') {
+            recognition.lang = 'ml-IN'; // Malayalam (India)
+        } else {
+            recognition.lang = 'en-US'; // English (US)
+        }
+        
+        console.log('Speech recognition initialized with language:', recognition.lang);
+        
+        // Attach event handlers
+        attachRecognitionEventHandlers();
+    }
+    
+    function attachRecognitionEventHandlers() {
+        if (!recognition) return;
+        
+        recognition.onresult = function(event) {
+            let finalTranscript = '';
+            let interimTranscript = '';
+            
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                const transcript = event.results[i][0].transcript;
+                if (event.results[i].isFinal) {
+                    finalTranscript += transcript + ' ';
+                } else {
+                    interimTranscript += transcript;
+                }
+            }
+            
+            // Update display with final and interim results
+            if (finalTranscript) {
+                transcriptionDisplay.innerHTML = finalTranscript + '<i>' + interimTranscript + '</i>';
+            } else if (interimTranscript) {
+                transcriptionDisplay.innerHTML = '<i>' + interimTranscript + '</i>';
+            }
+        };
+        
+        recognition.onerror = function(event) {
+            console.error('Speech recognition error:', event.error);
+            let errorMessage = 'Speech recognition error';
+            
+            switch (event.error) {
+                case 'no-speech':
+                    errorMessage = 'No speech detected. Please try again.';
+                    break;
+                case 'audio-capture':
+                    errorMessage = 'Microphone not found or not working.';
+                    break;
+                case 'not-allowed':
+                    errorMessage = 'Microphone permission denied.';
+                    break;
+                case 'network':
+                    errorMessage = 'Network error. Please check your connection.';
+                    break;
+                default:
+                    errorMessage = 'Speech recognition error: ' + event.error;
+            }
+            
+            updateStatus('error', errorMessage);
+            isListening = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            transcriptionDisplay.classList.remove('active');
+        };
+        
+        recognition.onend = function() {
+            console.log('Speech recognition ended');
+            isListening = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            transcriptionDisplay.classList.remove('active');
+            
+            // Auto-evaluate if we have transcript
+            const transcript = transcriptionDisplay.textContent;
+            if (transcript && !transcript.includes('Your spoken words will appear here') && 
+                !transcript.includes('Listening...') && 
+                !transcript.includes('No speech detected')) {
+                setTimeout(() => {
+                    evaluateSpeech(transcript);
+                }, 500);
+            }
+        };
+    }
+    
+    function startListening() {
+        if (!recognition) return;
+        
+        try {
+            // Clear previous transcript
+            transcriptionDisplay.innerHTML = '<em>Listening...</em>';
+            transcriptionDisplay.classList.add('active');
+            updateStatus('listening', 'Listening... Speak clearly!');
+            
+            // Start speech recognition
+            recognition.start();
+            isListening = true;
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+                
+        } catch (error) {
+            console.error('Error starting recognition:', error);
+            updateStatus('error', 'Failed to start listening. Please try again.');
+        }
+    }
+    
+    function stopListening() {
+        if (!recognition) return;
+        
+        try {
+            // Stop speech recognition
+            recognition.stop();
+            
+            isListening = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            transcriptionDisplay.classList.remove('active');
+            
+            if (transcriptionDisplay.textContent.includes('Listening...')) {
+                transcriptionDisplay.innerHTML = '<em>No speech detected. Try again!</em>';
+            }
+            
+            updateStatus('ready');
+            
+        } catch (error) {
+            console.error('Error stopping recognition:', error);
+        }
+    }
+    
+    function clearTranscription() {
+        transcriptionDisplay.innerHTML = '<em>Your spoken words will appear here...</em>';
+        updateStatus('ready');
+    }
+    
+    function saveProgress() {
+        const transcript = transcriptionDisplay.textContent;
+        
+        if (transcript.includes('Your spoken words will appear here') || 
+            transcript.includes('Listening...') || 
+            transcript.includes('No speech detected')) {
+            alert('Please record some speech before saving progress!');
+            return;
+        }
+        
+        // Show loading state
+        updateStatus('processing', 'Evaluating your speech...');
+        saveBtn.disabled = true;
+        
+        // Evaluate speech first, then save progress
+        evaluateSpeech(transcript);
+    }
+    
+    function evaluateSpeech(transcript) {
+        // Get the current story text to evaluate against
+        const expectedText = getCurrentExpectedText();
+        
+        if (!expectedText) {
+            alert('No story text selected for evaluation!');
+            updateStatus('ready');
+            saveBtn.disabled = false;
+            return;
+        }
+        
+        // Show loading state
+        updateStatus('processing', 'Evaluating your speech...');
+        
+        // Use text-based evaluation only (no audio processing needed)
+        console.log('Using text-based evaluation');
+        console.log('Spoken text:', transcript);
+        console.log('Expected text:', expectedText);
+        
+        sendTextBasedEvaluation(transcript, expectedText);
+    }
+    
+    function sendTextBasedEvaluation(transcript, expectedText) {
+        // Get CSRF token
+        const csrfToken = getCookie('csrftoken');
+        
+        // Determine evaluation language
+        let evaluationLanguage = recordingLanguage;
+        if (evaluationLanguage === 'auto') {
+            evaluationLanguage = currentLanguage;
+        }
+        
+        console.log(`🎤 Evaluating speech in ${evaluationLanguage}`);
+        console.log(`📝 Transcript: ${transcript}`);
+        console.log(`📝 Expected: ${expectedText}`);
+        
+        const requestData = {
+            transcript_only: transcript,  // Use transcript-only for text-based scoring
+            expected_text: expectedText,
+            language: evaluationLanguage,
+            timestamp: new Date().toISOString()
+        };
+        
+        // Show language-specific status
+        if (evaluationLanguage === 'ml') {
+            updateStatus('processing', '🇮🇳 Evaluating Malayalam speech...');
+        } else {
+            updateStatus('processing', '🇺🇸 Evaluating English speech...');
+        }
+        
+        fetch('/api/evaluate-speech/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('📊 Evaluation result:', data);
+            
+            if (data.success) {
+                // Display evaluation results
+                displayEvaluationResults(data);
+                
+                // Save progress with the score
+                saveSpeechProgressWithScore(data.transcription, data.score);
+                
+                // Show success message for children
+                showChildFriendlyScore(data.score, data.feedback, evaluationLanguage);
+            } else {
+                const errorMsg = `Speech evaluation failed: ${data.error || 'Unknown error'}`;
+                console.error('❌ Evaluation error:', errorMsg);
+                alert(errorMsg);
+                updateStatus('error', 'Evaluation failed');
+            }
+        })
+        .catch(error => {
+            console.error('❌ Error evaluating speech:', error);
+            alert('Error evaluating speech. Please try again.');
+            updateStatus('error', 'Network error');
+        })
+        .finally(() => {
+            saveBtn.disabled = false;
+        });
+    }
+    
+    function showChildFriendlyScore(score, feedback, language = 'en') {
+        // Create a child-friendly score display with language-specific messages
+        const scoreDisplay = document.createElement('div');
+        scoreDisplay.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            z-index: 10000;
+            max-width: 400px;
+            animation: bounceIn 0.5s ease-out;
+        `;
+        
+        let scoreEmoji = '🌟';
+        let scoreColor = '#28a745';
+        let scoreMessage = 'Great job!';
+        
+        if (score >= 90) {
+            scoreEmoji = '🏆';
+            scoreColor = '#28a745';
+            scoreMessage = language === 'ml' ? 'അത്യുത്തമം!' : 'Outstanding!';
+        } else if (score >= 75) {
+            scoreEmoji = '🌟';
+            scoreColor = '#ffc107';
+            scoreMessage = language === 'ml' ? 'നല്ലം!' : 'Excellent!';
+        } else if (score >= 60) {
+            scoreEmoji = '👍';
+            scoreColor = '#17a2b8';
+            scoreMessage = language === 'ml' ? 'നല്ല ജോലി!' : 'Good job!';
+        } else if (score >= 40) {
+            scoreEmoji = '💪';
+            scoreColor = '#fd7e14';
+            scoreMessage = language === 'ml' ? 'കൂടുതൽ ശ്രമിക്കൂ!' : 'Keep trying!';
+        } else {
+            scoreEmoji = '🎯';
+            scoreColor = '#dc3545';
+            scoreMessage = language === 'ml' ? 'കൂടുതൽ പരിശീലനം വേണം!' : 'Practice more!';
+        }
+        
+        // Language-specific title
+        const title = language === 'ml' ? '🇮🇳 മലയാളം വായനാ സ്കോർ' : '🇺🇸 Reading Score';
+        
+        scoreDisplay.innerHTML = `
+            <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #333;">
+                ${title}
+            </div>
+            <div style="font-size: 60px; margin-bottom: 10px;">${scoreEmoji}</div>
+            <div style="font-size: 24px; font-weight: bold; color: ${scoreColor}; margin-bottom: 10px;">
+                ${score}/100
+            </div>
+            <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+                ${scoreMessage}
+            </div>
+            <div style="font-size: 14px; color: #666; margin-bottom: 20px;">
+                ${feedback}
+            </div>
+            <button onclick="this.parentElement.remove()" style="
+                background: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 16px;
+            ">${language === 'ml' ? 'ശരി' : 'OK'}</button>
+        `;
+        
+        // Add bounce animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounceIn {
+                0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+                50% { transform: translate(-50%, -50%) scale(1.05); }
+                70% { transform: translate(-50%, -50%) scale(0.9); }
+                100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        document.body.appendChild(scoreDisplay);
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            if (scoreDisplay.parentElement) {
+                scoreDisplay.remove();
+            }
+        }, 5000);
+    }
+    
+    function getCurrentExpectedText() {
+        // Get the currently selected/highlighted text first
+        const selection = window.getSelection();
+        if (selection.toString().trim()) {
+            return selection.toString().trim();
+        }
+        
+        // Get the main story content area
+        const storyContent = document.querySelector('.story-content');
+        if (storyContent) {
+            // Get all text content from the story
+            const fullText = storyContent.textContent.trim();
+            if (fullText) {
+                return fullText;
+            }
+        }
+        
+        // Fallback: get the first paragraph or sentence
+        const paragraphs = document.querySelectorAll('.story-text p, .story-content p');
+        if (paragraphs.length > 0) {
+            return paragraphs[0].textContent.trim();
+        }
+        
+        // Fallback: get any text with story-text class
+        const storyTextElements = document.querySelectorAll('.story-text');
+        if (storyTextElements.length > 0) {
+            return storyTextElements[0].textContent.trim();
+        }
+        
+        // Final fallback: use story title
+        const storyTitle = document.querySelector('.story-title, h1, h2');
+        if (storyTitle) {
+            const title = storyTitle.textContent.replace('📚 Story Mode', '').trim();
+            if (title && title !== '') {
+                return title;
+            }
+        }
+        
+        // Last resort - use a simple phrase for testing
+        return 'The quick brown fox jumps over the lazy dog';
+    }
+    
+    function displayEvaluationResults(data) {
+        const score = data.score;
+        const transcription = data.transcription;
+        const expectedText = data.expected_text;
+        const method = data.method;
+        const feedback = data.feedback;
+        const enhancedMetrics = data.enhanced_metrics;
+        
+        // Create results display with enhanced scoring information
+        let resultsHtml = `
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <h3 style="color: #28a745; margin-top: 0;">🎯 Speech Evaluation Results</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                    <div>
+                        <strong>Your Score:</strong> 
+                        <span style="font-size: 24px; color: ${score >= 75 ? '#28a745' : score >= 60 ? '#ffc107' : '#dc3545'};">
+                            ${score}/100
+                        </span>
+                    </div>
+                    <div>
+                        <strong>Method:</strong> ${method.replace('_', ' ').toUpperCase()}
+                    </div>
+                </div>
+                <div style="margin: 10px 0;">
+                    <strong>What you said:</strong> "${transcription}"
+                </div>
+                <div style="margin: 10px 0;">
+                    <strong>Expected:</strong> "${expectedText}"
+                </div>
+        `;
+        
+        // Add enhanced metrics if available
+        if (enhancedMetrics) {
+            resultsHtml += `
+                <div style="margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 5px; border-left: 4px solid #007bff;">
+                    <h4 style="margin-top: 0; color: #007bff;">📊 Detailed Analysis</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                        <div><strong>Pronunciation:</strong> ${enhancedMetrics.pronunciation_metrics.accuracy.toFixed(1)}%</div>
+                        <div><strong>Speech Clarity:</strong> ${enhancedMetrics.clarity_metrics.clarity_score.toFixed(1)}%</div>
+                        <div><strong>Fluency:</strong> ${enhancedMetrics.fluency_metrics.fluency_score.toFixed(1)}%</div>
+                        <div><strong>Word Accuracy:</strong> ${enhancedMetrics.word_metrics.word_accuracy.toFixed(1)}%</div>
+                        <div><strong>Completeness:</strong> ${enhancedMetrics.completeness_metrics.completeness_score.toFixed(1)}%</div>
+                        <div><strong>Effort Bonus:</strong> ${enhancedMetrics.effort_bonus.toFixed(1)}%</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        resultsHtml += `
+                <div style="margin: 15px 0; padding: 10px; background: ${score >= 75 ? '#d4edda' : score >= 60 ? '#fff3cd' : '#f8d7da'}; border-radius: 5px;">
+                    <strong>💬 Feedback:</strong> ${feedback}
+                </div>
+            </div>
+        `;
+        
+        // Insert results after the story content
+        const storyContent = document.querySelector('.story-content');
+        const existingResults = document.querySelector('.evaluation-results');
+        
+        if (existingResults) {
+            existingResults.innerHTML = resultsHtml;
+        } else {
+            const resultsDiv = document.createElement('div');
+            resultsDiv.className = 'evaluation-results';
+            resultsDiv.innerHTML = resultsHtml;
+            storyContent.appendChild(resultsDiv);
+        }
+        
+        updateStatus('ready');
+    }
+    
+    function saveSpeechProgressWithScore(transcript, score) {
+        // Get CSRF token
+        const csrfToken = getCookie('csrftoken');
+        
+        fetch('/api/save-speech-progress/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            body: JSON.stringify({
+                transcript: transcript,
+                score: score,
+                story_id: '1',
+                timestamp: new Date().toISOString()
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Progress saved successfully');
+            } else {
+                console.error('Failed to save progress:', data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error saving progress:', error);
+        });
+    }
+    
+    function updateStatus(status, message = '') {
+        const statusClass = status === 'listening' ? 'status-listening' : 
+                           status === 'processing' ? 'status-processing' :
+                           status === 'error' ? 'status-error' : 'status-ready';
+        
+        let statusText = '';
+        if (status === 'listening') {
+            statusText = '<span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #dc3545; margin-right: 8px; animation: pulse 1.5s infinite;"></span>Listening...';
+        } else if (status === 'processing') {
+            statusText = '⏳ Evaluating speech...';
+        } else if (status === 'error') {
+            statusText = '❌ ' + (message || 'Error occurred');
+        } else {
+            statusText = '🎤 Ready to listen';
+        }
+        
+        statusIndicator.innerHTML = `<span class="${statusClass}">${statusText}</span>`;
+    }
+    
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
+    // Text-to-Speech Functions
+    let generatedAudio = null;
+    let speechUtterance = null;
+    let isGenerating = false;
+    let isPaused = false;
+    let currentAudioType = null; // 'html5' or 'tts'
+    
+    // Global audio management - ensures only one audio plays at a time
+    function stopAllAudioGlobal() {
+        console.log('🔇 Stopping ALL audio globally...');
+        
+        // Stop HTML5 audio elements
+        const audioElements = document.querySelectorAll('audio');
+        audioElements.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+        
+        // Stop speech synthesis
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+        }
+        
+        // Stop any generated audio
+        if (generatedAudio && generatedAudio.pause) {
+            generatedAudio.pause();
+            generatedAudio.currentTime = 0;
+        }
+        
+        // Reset all audio variables
+        speechUtterance = null;
+        generatedAudio = null;
+        isGenerating = false;
+        isPaused = false;
+        currentAudioType = null;
+        
+        // Update UI
+        updateTTSStatus('🔇 Audio stopped');
+        showPlayButton(true);
+        showPauseButton(false);
+        showStopButton(false);
+        
+        console.log('✅ All audio stopped successfully');
+    }
+    
+    function stopGeneratedAudio() {
+        console.log('⏹️ Stop button clicked');
+        
+        if (currentAudioType === 'html5') {
+            // Stop HTML5 audio
+            const audioElement = document.getElementById('storyAudio');
+            if (audioElement) {
+                audioElement.pause();
+                audioElement.currentTime = 0;
+                console.log('HTML5 audio stopped');
+            }
+        } else if (currentAudioType === 'tts') {
+            // Stop TTS audio
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+                console.log('Speech synthesis cancelled');
+            }
+            
+            if (generatedAudio && generatedAudio.pause) {
+                generatedAudio.pause();
+                generatedAudio.currentTime = 0;
+                console.log('Generated audio stopped');
+            }
+        }
+        
+        // Reset state
+        isPaused = false;
+        currentAudioType = null;
+        speechUtterance = null;
+        generatedAudio = null;
+        
+        // Update UI
+        updateTTSStatus('🔇 Audio stopped');
+        showPlayButton(true);
+        showPauseButton(false);
+        showStopButton(false);
+    }
+    
+    function regenerateAudio() {
+        console.log('🔄 Regenerating audio...');
+        stopAllAudioGlobal();
+        setTimeout(() => {
+            generateAudio();
+        }, 500);
+    }
+    
+    function generateAudio() {
+        if (isGenerating) return;
+        
+        const storyText = document.querySelector('.story-text').textContent;
+        
+        if (!storyText || storyText.trim() === '') {
+            updateTTSStatus('❌ No story text available');
+            return;
+        }
+        
+        // Use the new cached audio system
+        generateCachedAudio(storyText, currentLanguage, false);
+    }
+    
+    function forceGenerateAudio() {
+        console.log('🔄 Force generating new audio...');
+        stopAllAudioGlobal();
+        
+        const storyText = document.querySelector('.story-text').textContent;
+        if (!storyText || storyText.trim() === '') {
+            updateTTSStatus('❌ No story text available');
+            return;
+        }
+        
+        generateCachedAudio(storyText, currentLanguage, true);
+    }
+    
+    function generateCachedAudio(text, language, forceRegenerate = false) {
+        console.log(`🎵 Generating cached audio for ${language}: ${text.substring(0, 30)}...`);
+        
+        // Stop all existing audio
+        stopAllAudioGlobal();
+        
+        isGenerating = true;
+        currentAudioType = 'tts';
+        updateTTSStatus('🔄 Checking audio cache...');
+        showPlayButton(false);
+        showStopButton(false);
+        
+        // Get CSRF token
+        const csrfToken = getCookie('csrftoken');
+        
+        const requestData = {
+            story_id: '1',
+            title: 'The Little Rabbit&#x27;s Adventure',
+            text: text,
+            language: language,
+            timeout: 30, // 30 seconds timeout
+            force_regenerate: forceRegenerate
+        };
+        
+        console.log('📡 Requesting cached audio...', requestData);
+        
+        // Start timeout timer
+        const timeoutId = setTimeout(() => {
+            if (isGenerating) {
+                console.log('⏰ Audio generation timeout - stopping');
+                updateTTSStatus('⏰ Audio generation took too long');
+                showPlayButton(true);
+                showStopButton(false);
+                isGenerating = false;
+                currentAudioType = null;
+            }
+        }, 35000); // 35 seconds (slightly longer than server timeout)
+        
+        fetch('/api/get-or-generate-audio/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            clearTimeout(timeoutId);
+            console.log(`📡 Cached audio response status: ${response.status}`);
+            console.log(`📡 Response headers:`, response.headers);
+            
+            if (response.ok) {
+                const contentType = response.headers.get('Content-Type');
+                console.log(`📡 Content-Type: ${contentType}`);
+                
+                if (contentType && contentType.includes('audio/')) {
+                    return response.blob().then(audioBlob => {
+                        console.log(`🎵 Cached audio blob received: ${audioBlob.size} bytes`);
+                        
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        const audio = new Audio(audioUrl);
+                        
+                        generatedAudio = audio;
+                        currentAudioType = 'tts';
+                        
+                        // Add comprehensive event listeners
+                        audio.addEventListener('loadstart', () => {
+                            console.log('🎵 Cached audio loading started');
+                            updateTTSStatus('🔄 Loading cached audio...');
+                        });
+                        
+                        audio.addEventListener('canplay', () => {
+                            console.log('🎵 Cached audio ready to play');
+                        });
+                        
+                        audio.addEventListener('play', () => {
+                            console.log('🎵 Cached audio started playing');
+                            const audioSource = response.headers.get('X-Audio-Source') || 'unknown';
+                            const audioMethod = response.headers.get('X-Audio-Method') || 'unknown';
+                            const generationTime = response.headers.get('X-Generation-Time') || 'unknown';
+                            updateTTSStatus(`🎵 Playing ${language.toUpperCase()} audio (${audioSource}/${audioMethod})...`);
+                            showPlayButton(false);
+                            showPauseButton(true);
+                            showStopButton(true);
+                            isGenerating = false;
+                            isPaused = false;
+                        });
+                        
+                        audio.addEventListener('pause', () => {
+                            console.log('🎵 Cached audio paused');
+                            updateTTSStatus('⏸️ Audio paused');
+                            showPlayButton(true);
+                            showPauseButton(false);
+                        });
+                        
+                        audio.addEventListener('ended', () => {
+                            console.log('🎵 Cached audio ended');
+                            updateTTSStatus('✅ Audio completed');
+                            showPlayButton(true);
+                            showPauseButton(false);
+                            showStopButton(false);
+                            currentAudioType = null;
+                            URL.revokeObjectURL(audioUrl);
+                        });
+                        
+                        audio.addEventListener('error', (e) => {
+                            console.error('❌ Cached audio playback error:', e);
+                            console.error('❌ Audio error details:', audio.error);
+                            updateTTSStatus('❌ Audio playback error');
+                            showPlayButton(true);
+                            showPauseButton(false);
+                            showStopButton(false);
+                            currentAudioType = null;
+                            isGenerating = false;
+                            URL.revokeObjectURL(audioUrl);
+                        });
+                        
+                        // Try to play the audio
+                        audio.play().catch(error => {
+                            console.error('❌ Cached audio play error:', error);
+                            updateTTSStatus('❌ Failed to play audio');
+                            showPlayButton(true);
+                            showPauseButton(false);
+                            showStopButton(false);
+                            currentAudioType = null;
+                            isGenerating = false;
+                            URL.revokeObjectURL(audioUrl);
+                        });
+                    });
+                } else {
+                    return response.json().then(data => {
+                        console.log('📡 JSON response received:', data);
+                        if (data.success) {
+                            updateTTSStatus(`✅ ${data.message}`);
+                        } else {
+                            updateTTSStatus(`❌ ${data.error}`);
+                        }
+                        showPlayButton(true);
+                        showPauseButton(false);
+                        showStopButton(false);
+                        currentAudioType = null;
+                        isGenerating = false;
+                    });
+                }
+            } else {
+                throw new Error(`Cached audio request failed: ${response.status} ${response.statusText}`);
+            }
+        })
+        .catch(error => {
+            clearTimeout(timeoutId);
+            console.error('❌ Cached audio error:', error);
+            updateTTSStatus('❌ Failed to generate cached audio');
+            showPlayButton(true);
+            showPauseButton(false);
+            showStopButton(false);
+            currentAudioType = null;
+            isGenerating = false;
+        });
+    }
+    
+    function generateWebTTS(text, language) {
+        if ('speechSynthesis' in window) {
+            try {
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                
+                utterance.rate = 0.9;
+                utterance.pitch = 1.2;
+                utterance.volume = 1.0;
+                utterance.lang = language;
+                
+                const voices = window.speechSynthesis.getVoices();
+                let selectedVoice = null;
+                
+                selectedVoice = voices.find(voice => 
+                    voice.name.includes('Female') || 
+                    voice.name.includes('Samantha') || 
+                    voice.name.includes('Karen') ||
+                    voice.name.includes('Google US English Female')
+                );
+                
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                    console.log('Using voice:', selectedVoice.name, 'Language:', selectedVoice.lang);
+                }
+                
+                utterance.onstart = () => {
+                    updateTTSStatus('🎵 Playing audio...');
+                    showPlayButton(false);
+                    showPauseButton(true);
+                    showStopButton(true);
+                    isGenerating = false;
+                    isPaused = false;
+                    currentAudioType = 'tts';
+                };
+                
+                utterance.onend = () => {
+                    updateTTSStatus('✅ Audio completed');
+                    showPlayButton(true);
+                    showPauseButton(false);
+                    showStopButton(false);
+                    currentAudioType = null;
+                };
+                
+                utterance.onerror = (event) => {
+                    console.error('Speech synthesis error:', event);
+                    updateTTSStatus('❌ Error generating audio');
+                    showPlayButton(true);
+                    showPauseButton(false);
+                    showStopButton(false);
+                    currentAudioType = null;
+                    isGenerating = false;
+                };
+                
+                speechUtterance = utterance;
+                generatedAudio = utterance;
+                
+                setTimeout(() => {
+                    window.speechSynthesis.speak(utterance);
+                }, 1500);
+                
+            } catch (error) {
+                console.error('TTS Error:', error);
+                updateTTSStatus('❌ Error generating audio');
+                showPlayButton(true);
+                showPauseButton(false);
+                showStopButton(false);
+                currentAudioType = null;
+                isGenerating = false;
+            }
+        } else {
+            updateTTSStatus('⚠️ Browser does not support text-to-speech');
+            showPlayButton(true);
+            showPauseButton(false);
+            showStopButton(false);
+            currentAudioType = null;
+            isGenerating = false;
+        }
+    }
+    
+    function pauseGeneratedAudio() {
+        try {
+            if (currentAudioType === 'tts' && window.speechSynthesis) {
+                if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+                    window.speechSynthesis.pause();
+                    updateTTSStatus('⏸️ Audio paused');
+                    isPaused = true;
+                    showPlayButton(true);
+                    showPauseButton(false);
+                } else if (window.speechSynthesis.paused) {
+                    window.speechSynthesis.resume();
+                    updateTTSStatus('🎵 Playing audio...');
+                    isPaused = false;
+                    showPlayButton(false);
+                    showPauseButton(true);
+                }
+            } else if (currentAudioType === 'html5' && generatedAudio) {
+                if (generatedAudio.paused) {
+                    generatedAudio.play();
+                    updateTTSStatus('🎵 Playing audio...');
+                    isPaused = false;
+                    showPlayButton(false);
+                    showPauseButton(true);
+                } else {
+                    generatedAudio.pause();
+                    updateTTSStatus('⏸️ Audio paused');
+                    isPaused = true;
+                    showPlayButton(true);
+                    showPauseButton(false);
+                }
+            }
+        } catch (error) {
+            console.error('Pause/Resume error:', error);
+            updateTTSStatus('❌ Error controlling audio');
+        }
+    }
+    
+    // UI Control Functions
+    function showPlayButton(show) {
+        const btn = document.getElementById('playTtsBtn');
+        if (btn) {
+            btn.style.display = show ? 'inline-block' : 'none';
+        }
+    }
+    
+    function showPauseButton(show) {
+        const btn = document.getElementById('pauseTtsBtn');
+        if (btn) {
+            btn.style.display = show ? 'inline-block' : 'none';
+        }
+    }
+    
+    function showStopButton(show) {
+        const btn = document.getElementById('stopTtsBtn');
+        if (btn) {
+            btn.style.display = show ? 'inline-block' : 'none';
+        }
+    }
+    
+    function updateTTSStatus(message) {
+        const statusElement = document.getElementById('ttsStatusInline');
+        if (statusElement) {
+            statusElement.textContent = message;
+        }
+    }
+    
+    // Initialize voices when page loads
+    window.addEventListener('load', () => {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.getVoices();
+        }
+    });
+</script>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer style="background: var(--color-gray-900); color: white; padding: var(--space-12) 0; margin-top: var(--space-20);">
+        <div class="container">
+            <div class="flex flex-wrap justify-between gap-8">
+                <div class="flex-1" style="min-width: 280px;">
+                    <h5 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-4); color: white;">
+                        <i class="fas fa-graduation-cap"></i>
+                        Kids Learning Tool
+                    </h5>
+                    <p style="color: var(--color-gray-400); line-height: 1.6;">
+                        Revolutionizing education through AI-powered personalized learning experiences that adapt to each child's unique needs and learning style.
+                    </p>
+                </div>
+                
+                <div class="flex-1" style="min-width: 200px;">
+                    <h6 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--space-3); color: white;">Platform</h6>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        
+                            <a href="/child/dashboard/" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Child Dashboard</a>
+                            <a href="/parent/dashboard/" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Parent Dashboard</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="flex-1" style="min-width: 200px;">
+                    <h6 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--space-3); color: white;">Learning</h6>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        <a href="#" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Handwriting Practice</a>
+                        <a href="#" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Speech Development</a>
+                        <a href="#" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Reading Comprehension</a>
+                        <a href="#" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Mathematics</a>
+                    </div>
+                </div>
+                
+                <div class="flex-1" style="min-width: 200px;">
+                    <h6 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--space-3); color: white;">Company</h6>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        <a href="#" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">About Us</a>
+                        <a href="#" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Contact</a>
+                        <a href="#" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Privacy Policy</a>
+                        <a href="#" style="color: var(--color-gray-400); text-decoration: none; transition: color 0.3s ease;">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-gray-800); color: var(--color-gray-500);">
+                <p>&copy; 2024 Kids Learning Tool. All rights reserved. | Empowering children worldwide through innovative education.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add hover effects to footer links
+        document.querySelectorAll('footer a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.color = 'white';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.color = 'var(--color-gray-400)';
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Mode - Kids Learning Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .story-selector {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .language-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .language-tab {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .language-tab.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .language-tab:not(.active) {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .story-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .story-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .story-card.active {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .story-card h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .story-card .preview {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .story-card .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8em;
+            color: #999;
+        }
+        
+        .audio-badge {
+            background: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+        }
+        
+        .story-viewer {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .story-viewer h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .story-content {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+        }
+        
+        .audio-controls {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .audio-controls h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .audio-player {
+            margin-bottom: 15px;
+        }
+        
+        .audio-player audio {
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .control-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-warning {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .btn-info {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .status-message {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Story Mode</h1>
+            <p>Choose a story and practice reading it out loud!</p>
+            <p>📖 11 stories available</p>
+        </div>
+        
+        <!-- Story Selection -->
+        <div class="story-selector" id="storySelector">
+            <div class="language-tabs">
+                <button class="language-tab active" onclick="selectLanguage('en')">
+                    🇺🇸 English Stories
+                </button>
+                <button class="language-tab " onclick="selectLanguage('ml')">
+                    🇮🇳 Malayalam Stories
+                </button>
+            </div>
+            
+            <div class="story-grid">
+                
+                    <div class="story-card active" 
+                         onclick="selectStory(1, 'en')">
+                        <h4>The Little Rabbit&#x27;s Adventure</h4>
+                        <div class="preview">Once upon a time, in a green meadow filled with colorful flowers, …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                                <span class="audio-badge">🎧 Audio</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(2, 'en')">
+                        <h4>Rosie&#x27;s Meadow Adventure</h4>
+                        <div class="preview">Once upon a time, in a beautiful green meadow, there lived a …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                                <span class="audio-badge">🎧 Audio</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(3, 'en')">
+                        <h4>The Magical Garden</h4>
+                        <div class="preview">In a quiet neighborhood, there was a special garden that belonged to …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                                <span class="audio-badge">🎧 Audio</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(4, 'en')">
+                        <h4>Timmy the Turtle&#x27;s Big Journey</h4>
+                        <div class="preview">Timmy was a small turtle with a big dream. He lived in …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(5, 'en')">
+                        <h4>The Star That Lost Its Sparkle</h4>
+                        <div class="preview">High up in the night sky, there was a little star named …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(6, 'en')">
+                        <h4>The Brave Little Firefly</h4>
+                        <div class="preview">In a meadow filled with tall grass and wildflowers, there lived a …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                        </div>
+                    </div>
+                
+                
+                
+                    <div class="story-card " 
+                         onclick="selectStory(7, 'ml')">
+                        <h4>ചെറിയ മുയലിന്റെ സാഹസം</h4>
+                        <div class="preview">ഒരു കാലത്ത്, ഒരു ചെറിയ മുയൽ ഉണ്ടായിരുന്നു. അതിന്റെ പേര് മോട്ടു. മോട്ടു വളരെ ധൈര്യശാലിയായിരുന്നു. …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                                <span class="audio-badge">🎧 Audio</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(8, 'ml')">
+                        <h4>റോസിയുടെ പുൽമേടം</h4>
+                        <div class="preview">റോസി എന്ന ഒരു ചെറിയ പെൺകുട്ടി ഉണ്ടായിരുന്നു. അവൾക്ക് പുൽമേടങ്ങൾ വളരെ ഇഷ്ടമായിരുന്നു. ഒരു രാവിൽ, …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                                <span class="audio-badge">🎧 Audio</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(9, 'ml')">
+                        <h4>മാനവും സിംഹവും</h4>
+                        <div class="preview">ഒരു കാട്ടിൽ, ഒരു മാനും ഒരു സിംഹവും ഉണ്ടായിരുന്നു. അവർ നല്ല സുഹൃത്തുക്കളായിരുന്നു. ഒരു ദിവസം, …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                                <span class="audio-badge">🎧 Audio</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(10, 'ml')">
+                        <h4>ചന്ദ്രന്റെ കഥ</h4>
+                        <div class="preview">ഒരു രാത്രി, ഒരു ചെറിയ പെൺകുട്ടി ജാലകത്തിൽ നോക്കി. അവൾക്ക് ചന്ദ്രൻ കാണാൻ ഇഷ്ടമായിരുന്നു. ചന്ദ്രൻ …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                                <span class="audio-badge">🎧 Audio</span>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="story-card " 
+                         onclick="selectStory(11, 'ml')">
+                        <h4>കടൽക്കാരന്റെ മകൻ</h4>
+                        <div class="preview">ഒരു ചെറിയ ഗ്രാമത്തിൽ, ഒരു കടൽക്കാരൻ ഉണ്ടായിരുന്നു. അവന്റെ പേര് രാജൻ. രാജന് കടൽ വളരെ …</div>
+                        <div class="meta">
+                            <span>~5 min read</span>
+                            
+                                <span class="audio-badge">🎧 Audio</span>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+        
+        <!-- Story Viewer -->
+        
+            <div class="story-viewer" id="storyViewer">
+                <h2>The Little Rabbit&#x27;s Adventure</h2>
+                
+                <div class="story-content">
+                    <p>Once upon a time, in a green meadow filled with colorful flowers, there lived a little rabbit named Rosie.</p>
+
+<p>Rosie had soft white fur and long floppy ears. She loved to hop around the meadow, exploring new places and making friends with butterflies and birds.</p>
+
+<p>One sunny morning, Rosie decided to go on an adventure. She hopped past the tall oak tree, across the babbling brook, and into the deep forest.</p>
+
+<p>In the forest, she met a wise old owl who sat on a branch. &quot;Hello little one,&quot; said the owl. &quot;Where are you going?&quot;</p>
+
+<p>&quot;I&#x27;m on an adventure!&quot; said Rosie excitedly. &quot;I want to see what&#x27;s beyond the meadow.&quot;</p>
+
+<p>The owl smiled. &quot;Adventure is wonderful, but remember to be brave and kind. The forest has many surprises.&quot;</p>
+
+<p>Rosie continued her journey and soon found a patch of delicious carrots. She nibbled on them happily while watching the clouds drift by.</p>
+
+<p>As evening approached, Rosie knew it was time to go home. She hopped back through the forest, waved goodbye to the owl, and returned to her cozy burrow.</p>
+
+<p>That night, Rosie dreamed of her wonderful adventure and all the friends she had made. She couldn&#x27;t wait for her next adventure in the big, beautiful world.</p>
+                </div>
+                
+                <div class="audio-controls">
+                    <h3>🎵 Audio Controls</h3>
+                    
+                    
+                        <div class="audio-player">
+                            <audio id="storyAudio" controls preload="auto">
+                                <source src="/media/stories/generated_audio/generated_audio_1_en.mp3" type="audio/mpeg">
+                                <source src="/media/stories/generated_audio/generated_audio_1_en.mp3" type="audio/wav">
+                                <source src="/media/stories/generated_audio/generated_audio_1_en.mp3" type="audio/ogg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        
+                        <div class="control-buttons">
+                            <button class="btn btn-danger" onclick="stopAudio()">
+                                ⏹️ Stop Audio
+                            </button>
+                            <button class="btn btn-info" onclick="testAudio()">
+                                🧪 Test Audio
+                            </button>
+                            <button class="btn btn-warning" onclick="regenerateAudio()">
+                                🔄 Regenerate Audio
+                            </button>
+                        </div>
+                        <p><small>Generated: Mar 09, 2026 (gtts)</small></p>
+                        
+                    
+                    
+                    <div id="audioStatus" class="status-message hidden"></div>
+                </div>
+            </div>
+        
+    </div>
+    
+    <script>
+        // Language selection
+        function selectLanguage(language) {
+            window.location.href = `/story-mode/?language=${language}`;
+        }
+        
+        // Story selection
+        function selectStory(storyId, language) {
+            window.location.href = `/story-mode/?story=${storyId}&language=${language}`;
+        }
+        
+        // Audio controls
+        function stopAudio() {
+            const audio = document.getElementById('storyAudio');
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+                updateStatus('⏹️ Audio stopped', 'info');
+            }
+        }
+        
+        function testAudio() {
+            const audio = document.getElementById('storyAudio');
+            if (audio) {
+                updateStatus('🧪 Testing audio...', 'info');
+                
+                console.log('Audio Test Results:');
+                console.log('src:', audio.src);
+                console.log('readyState:', audio.readyState);
+                console.log('duration:', audio.duration);
+                console.log('paused:', audio.paused);
+                
+                audio.play().then(() => {
+                    updateStatus('✅ Audio test successful!', 'success');
+                }).catch(error => {
+                    updateStatus('❌ Audio test failed: ' + error.message, 'error');
+                });
+            }
+        }
+        
+        function generateAudio() {
+            updateStatus('🎤 Generating audio...', 'info');
+            
+            fetch('/api/get-or-generate-audio/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    story_id: 1,
+                    title: 'The Little Rabbit\u0027s Adventure',
+                    text: 'Once upon a time, in a green meadow filled with colorful flowers, there lived a little rabbit named Rosie.\u000A\u000ARosie had soft white fur and long floppy ears. She loved to hop around the meadow, exploring new places and making friends with butterflies and birds.\u000A\u000AOne sunny morning, Rosie decided to go on an adventure. She hopped past the tall oak tree, across the babbling brook, and into the deep forest.\u000A\u000AIn the forest, she met a wise old owl who sat on a branch. \u0022Hello little one,\u0022 said the owl. \u0022Where are you going?\u0022\u000A\u000A\u0022I\u0027m on an adventure!\u0022 said Rosie excitedly. \u0022I want to see what\u0027s beyond the meadow.\u0022\u000A\u000AThe owl smiled. \u0022Adventure is wonderful, but remember to be brave and kind. The forest has many surprises.\u0022\u000A\u000ARosie continued her journey and soon found a patch of delicious carrots. She nibbled on them happily while watching the clouds drift by.\u000A\u000AAs evening approached, Rosie knew it was time to go home. She hopped back through the forest, waved goodbye to the owl, and returned to her cozy burrow.\u000A\u000AThat night, Rosie dreamed of her wonderful adventure and all the friends she had made. She couldn\u0027t wait for her next adventure in the big, beautiful world.',
+                    language: 'en',
+                    timeout: 30
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();
+                } else {
+                    throw new Error('Audio generation failed');
+                }
+            })
+            .then(blob => {
+                const audioUrl = URL.createObjectURL(blob);
+                const audio = new Audio(audioUrl);
+                
+                // Create audio element
+                const audioContainer = document.querySelector('.audio-player');
+                audioContainer.innerHTML = `<audio id="storyAudio" controls><source src="${audioUrl}" type="audio/mpeg"></audio>`;
+                
+                // Auto play
+                setTimeout(() => {
+                    const newAudio = document.getElementById('storyAudio');
+                    newAudio.play();
+                    updateStatus('🎵 Playing generated audio...', 'success');
+                }, 1000);
+                
+            })
+            .catch(error => {
+                updateStatus('❌ Audio generation failed: ' + error.message, 'error');
+            });
+        }
+        
+        function regenerateAudio() {
+            if (confirm('Generate new audio for this story? This will replace any existing audio.')) {
+                generateAudio();
+            }
+        }
+        
+        function updateStatus(message, type) {
+            const statusDiv = document.getElementById('audioStatus');
+            if (statusDiv) {
+                statusDiv.textContent = message;
+                statusDiv.className = `status-message status-${type}`;
+                statusDiv.classList.remove('hidden');
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    statusDiv.classList.add('hidden');
+                }, 5000);
+            }
+        }
+        
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Story Mode loaded successfully');
+            
+            // Add audio event listeners
+            const audio = document.getElementById('storyAudio');
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    updateStatus('🎵 Playing audio...', 'success');
+                });
+                
+                audio.addEventListener('pause', () => {
+                    updateStatus('⏸️ Audio paused', 'info');
+                });
+                
+                audio.addEventListener('ended', () => {
+                    updateStatus('✅ Audio completed', 'success');
+                });
+                
+                audio.addEventListener('error', (e) => {
+                    updateStatus('❌ Audio error: ' + e.message, 'error');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

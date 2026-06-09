@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Navigation Test</title>
+    <script>
+function goToDashboard() {
+    console.log('Test: Navigating to dashboard...');
+    window.location.href = '/child/dashboard/';
+}
+
+function testButton() {
+    console.log('Test button clicked');
+    goToDashboard();
+}
+    </script>
+</head>
+<body>
+    <h1>Dashboard Navigation Test</h1>
+    <button class="btn btn-info" onclick="goToDashboard()">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </button>
+    
+    <br><br>
+    
+    <button class="btn btn-primary" onclick="testButton()">
+        Test Navigation Function
+    </button>
+    
+    <p>Open browser console (F12) to see debug messages</p>
+</body>
+</html>
